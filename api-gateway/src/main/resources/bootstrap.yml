@@ -1,0 +1,43 @@
+spring:
+    # rabbit 消息队列
+#  rabbitmq:
+#    password: guest
+#    username: guest
+#    host: localhost
+#    port: 5672
+  application:
+    name: api
+  redis:
+    host: localhost
+    port: 6379
+    # 从配置中心获取信息
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: CONFIG
+#      label: master
+#      profile: dev
+# 此处把注册中心配置在本地。是稳妥措施，虽然也可以配置在git上。eureka默认的端口是8761.如果实际中端口是8761话，把下面配置放到
+# git上没问题，若端口是8762时或其它时，就会报错。原因是是加载配置文件先后顺序问题：1）先找到eureka上读取CONFIGR的内容 2）
+# 再到git上读取sql相关和其它文件信息。本地端口不是8761时，根本找不到eureka怎么读取git上的内容。所以会报错。此处需注意
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  # git上改动了配置文件后，发生post请求动态刷新配置文件
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#      # 暴露bus-refresh节点，通过此节点刷新配置
+#        include: '*'
+zuul:
+  # 全局路由处理，让其携带cookie
+  sensitive-headers:
+  routes:
+    order: /myorder/**
+
+#  security:
+#    enabled: false
+

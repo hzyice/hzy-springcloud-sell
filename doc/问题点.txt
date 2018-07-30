@@ -1,0 +1,54 @@
+更多学习资源qq: 791770686
+
+1. 
+postman List<String>  与  List<Object>  请求
+
+
+2.
+springcloud feign  组件依赖添加了，但使用不了
+
+
+3.
+jsonUtil    toJson  与  fromJson   中使用到的泛型 
+
+4. 
+try/cath 捕获后代码执行
+
+
+5.
+7-9  7-10  异步和信息  --》要深入探索
+分布式开发，如何保证数据的一致性
+
+
+6.
+8-1 05：17
+常用的网关方案
+1. nginx + lua
+2. kong (对nginx进一步封装，商业软件)
+3. Tyk (Go语言开发的)
+4. springcloud zuul
+
+
+7.
+不重启服务情况下，从git上动态更新配置
+
+
+8.
+分布式下异步扣库存
+
+
+9.
+跨域
+幕课网上有 “ajax完全跨域讲解” 免费课程
+1) zuul 跨域  ---》1.@CrossOrigin 标记在方法上，代表该方法支持跨域     1.创建一个类， corsFilter  加配置
+2) nginx 上配置
+
+
+10.
+不同服务间通信   --》在项目的入口类中配置
+RestTemplate Autowired 自动注入成功（调式时是cglib代理方式），但调用失败。在方法中用 new 的方式可行。待研究
+
+
+11.
+build.sh 脚本语言
+#!/usr/bin/env bash

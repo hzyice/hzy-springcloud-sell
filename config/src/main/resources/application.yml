@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: config
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+  cloud:
+    config:
+      server:
+        git:
+        # git
+          uri: https://github.com/hzyice/springcloud.git
+          username: hzyice
+          password: 520025.hzy.
+          search-paths: config-repo
+          # 从远程git上拉取配置文件后，备份到本地如下目录
+          #basedir: E:\MyIDEAWorkProject\springcloudConfigProfile\config-repo
+        # 码云
+#          uri: https://gitee.com/hzyice/springcloud-config.git
+#          username: 285633420@qq.com
+#          password: 520025..
+#          search-paths: config
+management:
+  endpoints:
+    web:
+    # 开启刷新: bus  refaulsh
+      expose: "*"
+eureka:
+  client:
+    serviceurl:
+      defaultZone: http://localhost:8761/eureka/
+encrypt:
+  # git上webhook对应的Key
+  key: 520025..

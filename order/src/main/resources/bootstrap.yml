@@ -1,0 +1,63 @@
+spring:
+  datasource:
+    driverclassname: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.117.130/sell?characterEncoding=utf8&useSSL=false
+  application:
+    name: order
+  zipkin:
+  # 把链路日志输出到如下指定网址（docker上运行zipkin容器的Ip）
+    base-url: http://192.168.99.100:9411/
+  sleuth:
+    sampler:
+    # 设置为1 表示全部输出(可以点进去看,值的单位是百分比)
+      percentage: 1
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#  cloud:
+#    stream:
+#      bindings:
+#      # MyStream: 名字不是乱取的，是代码中定义的消息队列名称
+#        MyStream:
+#        # order: 是分组的名字
+#          group: order
+#          # 让消息在rabbitmq中以json格式显示，方便消息堆积时查看
+#          content-type: application/json
+#  redis:
+#    port: 6379
+#    host: localhost
+
+eureka:
+  client:
+    serviceurl:
+      defaultZone: http://localhost:8761/eureka/
+
+# 服务降级超时设置
+hystrix:
+  command:
+  # default 默认全局设置统一超时时间
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000 # 注意要在方法上加工 @HystrixCommand,否则无效
+    # 具体对哪个方法超时设置。 count 就是方法名
+    count:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000 # 注意要在方法上加工 @HystrixCommand,否则无效
+
+# hystrix Dashboard  的监控平台下。访问路径去掉 application
+management:
+  context-path: /
+logging:
+  level:
+  # 把下面包下的日志级别调整成debug
+    org.springframework.web.client: debug
+
+
